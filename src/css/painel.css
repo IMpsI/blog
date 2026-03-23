@@ -1,0 +1,106 @@
+.container-painel {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 30px;
+}
+
+.sidebar {
+    background: var(--paper);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+    height: fit-content;
+}
+
+.main-content {
+    background: var(--paper);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+}
+
+.nav-btn {
+    display: block;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    text-align: center;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-new {
+    background: #A9DFBF;
+    color: #196F3D;
+}
+
+.btn-accounts {
+    background: #AED6F1;
+    color: #21618C;
+}
+
+.btn-profile {
+    background: #FAD7A0;
+    color: #7E5109;
+}
+
+.nav-btn:hover {
+    transform: scale(1.02);
+    filter: brightness(0.95);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th {
+    text-align: left;
+    padding: 12px;
+    color: var(--ink-light);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--border);
+}
+
+td {
+    padding: 15px 12px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.95rem;
+}
+
+.action-link {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin-right: 15px;
+}
+
+.edit {
+    color: var(--accent);
+}
+
+.del {
+    color: #E74C3C;
+}
+
+.btn-theme {
+    background: none;
+    border: 1px solid var(--baby-blue);
+    border-radius: 20px;
+    cursor: pointer;
+    padding: 5px 15px;
+    color: var(--ink);
+    font-size: 0.8rem;
+    font-weight: bold;
+}

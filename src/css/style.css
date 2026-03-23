@@ -1,0 +1,360 @@
+   :root {
+       --bg: #F0F8FF;
+       --paper: #FFFFFF;
+       --ink: #2C3E50;
+       --ink-light: #5D6D7E;
+       --baby-blue: #85C1E9;
+       --baby-blue-hover: #5DADE2;
+       --accent: #3498DB;
+       --border: #EBF5FB;
+   }
+
+   body.dark-mode {
+       --bg: #0B1622;
+       --paper: #15202B;
+       --ink: #E1E8ED;
+       --ink-light: #8899A6;
+       --baby-blue: #1B91DA;
+       --baby-blue-hover: #196696;
+       --accent: #3498DB;
+       --border: #1E2F3F;
+   }
+
+   body {
+       background: var(--bg);
+       color: var(--ink);
+       font-family: 'Segoe UI', sans-serif;
+       margin: 0;
+       transition: 0.3s;
+   }
+
+   /* HEADER */
+   header {
+       background: var(--paper);
+       padding: 15px 40px;
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+       position: sticky;
+       top: 0;
+       z-index: 1000;
+       border-bottom: 2px solid var(--border);
+   }
+
+   .logo {
+       font-size: 1.6rem;
+       font-weight: bold;
+       color: var(--accent);
+       text-decoration: none;
+       font-family: 'Georgia', serif;
+       font-style: italic;
+       flex-shrink: 0;
+   }
+
+   /* SEARCH BAR PROFISSIONAL */
+   .search-container {
+       position: relative;
+       flex-grow: 1;
+       max-width: 450px;
+       margin: 0 30px;
+   }
+
+   .search-form {
+       display: flex;
+       align-items: center;
+       background: var(--bg);
+       border: 1px solid var(--baby-blue);
+       border-radius: 25px;
+       padding: 2px 5px 2px 15px;
+       transition: 0.3s;
+   }
+
+   .search-form:focus-within {
+       border-color: var(--accent);
+       box-shadow: 0 0 8px rgba(52, 152, 219, 0.2);
+   }
+
+   .search-form input {
+       flex-grow: 1;
+       border: none;
+       background: transparent;
+       color: var(--ink);
+       padding: 10px 0;
+       outline: none;
+       font-size: 0.95rem;
+   }
+
+   .search-form button {
+       background: var(--baby-blue);
+       border: none;
+       color: white;
+       width: 38px;
+       height: 38px;
+       border-radius: 50%;
+       cursor: pointer;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       transition: 0.3s;
+       margin-left: 10px;
+   }
+
+   .search-form button:hover {
+       background: var(--accent);
+       transform: scale(1.05);
+   }
+
+   /* SUGESTÕES AUTOCOMPLETE */
+   #search-results {
+       position: absolute;
+       top: 55px;
+       left: 10px;
+       right: 10px;
+       background: var(--paper);
+       border-radius: 12px;
+       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+       display: none;
+       z-index: 1100;
+       border: 1px solid var(--border);
+       overflow: hidden;
+   }
+
+   .search-item {
+       padding: 12px 15px;
+       border-bottom: 1px solid var(--border);
+       cursor: pointer;
+       color: var(--ink);
+       text-decoration: none;
+       display: block;
+       font-size: 0.9rem;
+   }
+
+   .search-item:hover {
+       background: var(--bg);
+       color: var(--accent);
+   }
+
+   .nav-links {
+       display: flex;
+       align-items: center;
+   }
+
+   .nav-links a {
+       color: var(--ink-light);
+       text-decoration: none;
+       margin-left: 15px;
+       font-weight: 600;
+       padding: 8px 15px;
+       border-radius: 20px;
+       transition: 0.2s;
+   }
+
+   .nav-links a:hover {
+       color: var(--accent);
+       background: var(--bg);
+   }
+
+   .btn-destaque {
+       background: var(--baby-blue);
+       color: white !important;
+   }
+
+   .btn-dark {
+       background: none;
+       border: 1px solid var(--baby-blue);
+       cursor: pointer;
+       padding: 8px;
+       border-radius: 50%;
+       margin-left: 10px;
+       color: var(--ink);
+       line-height: 0;
+   }
+
+   /* POSTS ESTILO LIVRO */
+   .container {
+       max-width: 800px;
+       margin: 40px auto;
+       padding: 0 20px;
+   }
+
+   .post {
+       background: var(--paper);
+       padding: 40px;
+       border-radius: 15px;
+       margin-bottom: 40px;
+       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+       border: 1px solid var(--border);
+       transition: 0.3s;
+       scroll-margin-top: 100px;
+   }
+
+   .post:hover {
+       transform: translateY(-5px);
+       box-shadow: 0 12px 30px rgba(133, 193, 233, 0.2);
+   }
+
+   .post h2 {
+       margin: 0 0 15px 0;
+       font-family: 'Georgia', serif;
+       font-size: 2.2rem;
+       color: var(--ink);
+       line-height: 1.2;
+   }
+
+   .meta {
+       font-size: 0.9rem;
+       color: var(--ink-light);
+       display: flex;
+       justify-content: space-between;
+       border-bottom: 1px solid var(--border);
+       padding-bottom: 15px;
+       margin-bottom: 25px;
+       align-items: center;
+   }
+
+   .conteudo {
+       line-height: 1.8;
+       font-family: 'Georgia', serif;
+       font-size: 1.2rem;
+       color: var(--ink);
+   }
+
+   /* BARRA DE INTERAÇÃO */
+   .interact-bar {
+       display: flex;
+       flex-wrap: wrap;
+       gap: 12px;
+       background: var(--bg);
+       padding: 15px;
+       border-radius: 12px;
+       margin-top: 30px;
+       align-items: center;
+   }
+
+   .btn-act {
+       background: var(--paper);
+       border: 1px solid var(--border);
+       color: var(--ink-light);
+       padding: 10px 18px;
+       border-radius: 25px;
+       cursor: pointer;
+       font-weight: bold;
+       font-size: 0.9rem;
+       text-decoration: none;
+       transition: 0.2s;
+       display: flex;
+       align-items: center;
+       gap: 6px;
+   }
+
+   .btn-act:hover {
+       border-color: var(--baby-blue);
+       color: var(--accent);
+       transform: translateY(-2px);
+       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+   }
+
+   .btn-read {
+       background: var(--baby-blue);
+       color: white;
+       margin-left: auto;
+       border: none;
+   }
+
+   .btn-read:hover {
+       background: var(--baby-blue-hover);
+       color: white;
+   }
+
+   /* COMENTÁRIOS GAVETA */
+   .comments-box {
+       display: none;
+       margin-top: 25px;
+       padding-top: 20px;
+       border-top: 1px dashed var(--baby-blue);
+   }
+
+   .comment {
+       background: var(--bg);
+       padding: 18px;
+       border-radius: 0 18px 18px 18px;
+       margin-bottom: 15px;
+       border: 1px solid var(--border);
+       position: relative;
+       transition: 0.3s;
+   }
+
+   .comment:hover {
+       background: var(--paper);
+   }
+
+   .comment strong {
+       color: var(--accent);
+       font-family: 'Georgia', serif;
+   }
+
+   .comment-text {
+       margin-top: 8px;
+       color: var(--ink);
+       font-size: 1rem;
+       line-height: 1.5;
+   }
+
+   .comment-actions {
+       position: absolute;
+       top: 15px;
+       right: 18px;
+       display: flex;
+       gap: 10px;
+   }
+
+   .btn-mini {
+       background: none;
+       border: none;
+       color: #999;
+       font-size: 0.8rem;
+       cursor: pointer;
+       font-weight: bold;
+       padding: 0;
+   }
+
+   .btn-mini:hover {
+       color: var(--accent);
+   }
+
+   textarea {
+       width: 100%;
+       padding: 15px;
+       border-radius: 12px;
+       border: 1px solid var(--baby-blue);
+       background: var(--paper);
+       color: var(--ink);
+       margin: 15px 0;
+       resize: vertical;
+       box-sizing: border-box;
+       font-family: inherit;
+       font-size: 1rem;
+       outline: none;
+   }
+
+   textarea:focus {
+       border-color: var(--accent);
+       box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+   }
+
+   .btn-send {
+       background: var(--baby-blue);
+       color: white;
+       border: none;
+       padding: 12px 25px;
+       border-radius: 25px;
+       cursor: pointer;
+       font-weight: bold;
+       transition: 0.3s;
+   }
+
+   .btn-send:hover {
+       background: var(--accent);
+       transform: translateY(-2px);
+   }

@@ -1,0 +1,30 @@
+<header>
+    <a href="/" class="logo">O Blog</a>
+    
+    <div class="search-container">
+        <form action="/" method="GET" class="search-form" id="mainSearchForm">
+            <input type="text" name="q" id="searchInput" autocomplete="off" placeholder="Pesquisar histórias..." value="<?= htmlspecialchars($busca) ?>">
+            <button type="submit" title="Pesquisar">
+                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </button>
+        </form>
+        <div id="search-results"></div>
+    </div>
+
+    <div class="nav-links">
+        <?php if(isset($_SESSION['logado'])): ?>
+            <?php 
+                if($_SESSION['nivel'] !== 'leitor'){
+                    echo '<a href="painel">Painel</a>';
+                }else{
+                    echo  "<span>Olá, <strong> {$_SESSION['autor_nome']}</strong></span>";
+                }
+                ?>
+            <a href="sair" style="color: #E74C3C;">Sair</a>
+        <?php else: ?>
+            <a href="entrar">Entrar</a>
+            <a href="cadastro" class="btn-destaque">Criar Conta</a>
+        <?php endif; ?>
+        <button class="btn-dark" id="themeBtn" title="Alternar Modo Noturno">🌓</button>
+    </div>
+</header>
