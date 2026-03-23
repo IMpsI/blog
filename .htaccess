@@ -1,0 +1,25 @@
+RewriteEngine On
+RewriteBase /blog/
+
+# Se o recurso existir fisicamente, não reescreve.
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Rotas amigáveis do projeto
+RewriteRule ^$ index.php [L,QSA]
+RewriteRule ^entrar/?$ login.php [L,QSA]
+RewriteRule ^sair/?$ logout.php [L,QSA]
+RewriteRule ^cadastro/?$ cadastro.php [L,QSA]
+RewriteRule ^painel/?$ dashboard.php [L,QSA]
+RewriteRule ^estudio/?$ admin.php [L,QSA]
+RewriteRule ^ler/?$ ler.php [L,QSA]
+RewriteRule ^reagir/?$ reagir.php [L,QSA]
+RewriteRule ^buscar-ajuda/?$ buscar_ajuda.php [L,QSA]
+RewriteRule ^confirmar-email/?$ confirmar_email.php [L,QSA]
+RewriteRule ^editar-post/?$ editar_post.php [L,QSA]
+RewriteRule ^excluir-post/?$ excluir_post.php [L,QSA]
+RewriteRule ^editar-autor/?$ editar_autor.php [L,QSA]
+RewriteRule ^novo-autor/?$ cadastrar_autor.php [L,QSA]
+RewriteRule ^minha-conta/?$ minha_conta.php [L,QSA]
+RewriteRule ^excluir-usuario/?$ excluir_usuario.php [L,QSA]

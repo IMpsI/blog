@@ -1,6 +1,5 @@
 <?php
-session_start();
-require 'db.php';
+require_once __DIR__ . '/bootstrap.php';
 require 'motor_email.php'; // Garante que o motor está carregado
 
 $mensagem = '';
@@ -63,6 +62,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Criar Conta - O Blog</title>
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/painel.css">
     <style>
         :root {
             --bg: #F0F8FF;
@@ -197,10 +198,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <header>
-        <a href="/" class="logo">O Blog</a>
-        <button class="btn-theme" id="themeBtn">Alternar Tema</button>
-    </header>
+    <?php $busca = ''; require 'layout/header_pesquisa.php'; ?>
     <div class="container">
         <div class="box">
             <h2>Criar Conta</h2>

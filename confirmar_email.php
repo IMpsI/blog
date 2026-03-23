@@ -1,5 +1,5 @@
 <?php
-require 'db.php';
+require_once __DIR__ . '/bootstrap.php';
 
 $mensagem = '';
 $token = $_GET['token'] ?? null;
@@ -21,7 +21,7 @@ if ($token) {
         $mensagem = "<h2 style='color: #F44336;'>Link Inválido!</h2><p>O link que você acessou é inválido ou a sua conta já foi confirmada anteriormente.</p>";
     }
 } else {
-    header('Location: /');
+    header('Location: index.php');
     exit;
 }
 ?>
@@ -32,6 +32,8 @@ if ($token) {
 <head>
     <meta charset="UTF-8">
     <title>Confirmação de Conta</title>
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/painel.css">
     <style>
         body {
             background: #121212;
@@ -67,12 +69,13 @@ if ($token) {
 </head>
 
 <body>
+    <?php $busca = ''; require 'layout/header_pesquisa.php'; ?>
     <div class="box">
         <?= $mensagem ?>
         <?php if (strpos($mensagem, '#4CAF50') !== false): ?>
             <a href="entrar" class="btn-login">Fazer Login Agora</a>
         <?php else: ?>
-            <a href="/" class="btn-login">Voltar para o Início</a>
+            <a href="index.php" class="btn-login">Voltar para o Início</a>
         <?php endif; ?>
     </div>
 </body>

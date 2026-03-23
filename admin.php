@@ -1,9 +1,8 @@
 <?php
-session_start();
-require 'db.php';
+require_once __DIR__ . '/bootstrap.php';
 
 if (!isset($_SESSION['logado']) || $_SESSION['nivel'] === 'leitor') {
-    header('Location: /');
+    header('Location: index.php');
     exit;
 }
 
@@ -47,6 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Estúdio - O Blog</title>
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/painel.css">
     <style>
         :root {
             --bg: #F0F8FF;
@@ -188,10 +189,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <header>
-        <a href="/" class="logo">O Blog <span style="font-size: 0.9rem; color: var(--ink-light); font-style: normal; font-weight: normal;">| Estúdio</span></a>
-        <button class="btn-theme" id="themeBtn">Alternar Tema</button>
-    </header>
+    <?php $busca = ''; require 'layout/header_pesquisa.php'; ?>
 
     <div class="container">
         <form method="POST" class="editor-box">

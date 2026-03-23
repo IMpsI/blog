@@ -1,6 +1,5 @@
 <?php
-session_start();
-require 'db.php';
+require_once __DIR__ . '/bootstrap.php';
 
 if (!isset($_SESSION['logado']) || $_SESSION['nivel'] !== 'admin') {
     header('Location: entrar');
@@ -38,6 +37,8 @@ $usuarios = $db->query("SELECT id, nome, usuario, nivel FROM usuarios ORDER BY n
 <head>
     <meta charset="UTF-8">
     <title>Gerenciar Autores</title>
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/painel.css">
     <style>
         body {
             background: #121212;
@@ -147,6 +148,7 @@ $usuarios = $db->query("SELECT id, nome, usuario, nivel FROM usuarios ORDER BY n
 </head>
 
 <body>
+    <?php $busca = ''; require 'layout/header_pesquisa.php'; ?>
 
     <div class="flex-container">
         <div class="box form-box">

@@ -1,6 +1,5 @@
 <?php
-session_start();
-require 'db.php';
+require_once __DIR__ . '/bootstrap.php';
 
 // Diz ao navegador que a resposta será em formato JSON
 header('Content-Type: application/json');

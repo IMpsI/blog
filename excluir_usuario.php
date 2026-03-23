@@ -1,10 +1,9 @@
 <?php
-session_start();
-require 'db.php';
+require_once __DIR__ . '/bootstrap.php';
 
 // 1 e 2. TRAVA DE SEGURANÇA MÁXIMA: Só Admin passa daqui
 if (!isset($_SESSION['logado']) || $_SESSION['nivel'] !== 'admin') {
-    header('Location: /');
+    header('Location: index.php');
     exit;
 }
 

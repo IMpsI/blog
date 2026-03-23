@@ -1,5 +1,5 @@
 <?php
-require 'db.php';
+require_once __DIR__ . '/bootstrap.php';
 
 // Limpa a tabela para garantir
 $db->exec("DELETE FROM usuarios WHERE usuario = 'Mps'");

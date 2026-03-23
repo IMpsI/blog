@@ -1,10 +1,9 @@
 <?php
-session_start();
-require 'db.php';
+require_once __DIR__ . '/bootstrap.php';
 
 // TRAVA NÍVEL LEITOR: Expulsa os leitores que tentarem forçar a URL
 if ($_SESSION['nivel'] === 'leitor') {
-    header('Location: /');
+    header('Location: index.php');
     exit;
 }
 
@@ -70,6 +69,8 @@ if (!$post) {
 <head>
     <meta charset="UTF-8">
     <title>Editar Postagem</title>
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/painel.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.2/tinymce.min.js"></script>
     <style>
         body {
@@ -165,6 +166,7 @@ if (!$post) {
 </head>
 
 <body>
+    <?php $busca = ''; require 'layout/header_pesquisa.php'; ?>
     <a href="painel" class="btn-top btn-dash">← Voltar ao Painel</a>
 
     <div class="container">

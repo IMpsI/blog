@@ -1,8 +1,26 @@
 <?php
-session_start();
-require 'db.php';
-// --- 1. MANUTENÇÃO AUTOMÁTICA DO BANCO ---
-@$db->exec("ALTER TABLE comentarios ADD COLUMN editado INTEGER DEFAULT 0");
+require_once __DIR__ . '/bootstrap.php';
+
+$busca = trim($_GET['q'] ?? '');
+
+$sql = "SELECT posts.*, usuarios.nome_artistico, usuarios.nome,
+        (SELECT COUNT(*) FROM comentarios WHERE post_id = posts.id) AS qtd_coment,
+        (SELECT COUNT(*) FROM reacoes WHERE post_id = posts.id AND tipo_reacao = 'like') AS qtd_likes,
+        (SELECT COUNT(*) FROM reacoes WHERE post_id = posts.id AND tipo_reacao = 'dislike') AS qtd_dislikes
+        FROM posts
+        LEFT JOIN usuarios ON posts.autor_login = usuarios.usuario";
+
+if ($busca !== '') {
+    $sql .= " WHERE posts.titulo LIKE :b OR posts.conteudo LIKE :b";
+}
+
+$sql .= " ORDER BY posts.data_publicacao DESC";
+
+$stmt = $db->prepare($sql);
+if ($busca !== '') {
+    $stmt->bindValue(':b', "%{$busca}%", SQLITE3_TEXT);
+}
+$posts = $stmt->execute();
 
 // --- 2. PROCESSAMENTO DE AÇÕES (POST) ---
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -34,10 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindValue(':u', $_SESSION['usuario_login'], SQLITE3_TEXT);
         $stmt->execute();
     }
-    header("Location: /#post-" . ($_POST['post_id'] ?? $_POST['post_id_origem']));
+    header("Location: index.php#post-" . ($_POST['post_id'] ?? $_POST['post_id_origem']));
     exit;
 }
 
+$pageTitle = 'O Blog - Biblioteca Digital';
 require 'layout/head.php';
 require 'layout/header_pesquisa.php';
 ?>

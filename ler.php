@@ -1,10 +1,9 @@
 <?php
-session_start();
-require 'db.php';
+require_once __DIR__ . '/bootstrap.php';
 
 $post_id = $_GET['id'] ?? null;
 if (!$post_id) {
-    header('Location: /');
+    header('Location: index.php');
     exit;
 }
 
@@ -61,14 +60,14 @@ if (!$p) {
 
 $autor = $p['nome_artistico'] ?: ($p['nome'] ?: 'Anônimo');
 $time = max(1, ceil(str_word_count(strip_tags($p['conteudo'])) / 200));
-?>
-<!DOCTYPE html>
-<html lang="pt-BR">
 
-<head>
-    <meta charset="UTF-8">
-    <title><?= htmlspecialchars($p['titulo']) ?> - O Blog</title>
-    <style>
+$pageTitle = htmlspecialchars($p['titulo']) . ' - O Blog';
+$busca = '';
+
+require 'layout/head.php';
+require 'layout/header_pesquisa.php';
+?>
+<style>
         :root {
             --bg: #F0F8FF;
             --paper: #FFFFFF;
@@ -317,24 +316,6 @@ $time = max(1, ceil(str_word_count(strip_tags($p['conteudo'])) / 200));
             transform: translateY(-2px);
         }
     </style>
-</head>
-
-<body>
-
-    <header>
-        <a href="/" class="logo">O Blog</a>
-        <div class="nav-links">
-            <a href="/">Voltar ao Início</a>
-            <?php if (isset($_SESSION['logado'])): ?>
-                <?php if ($_SESSION['nivel'] !== 'leitor'): ?><a href="painel">Painel</a><?php endif; ?>
-                <a href="sair" style="color: #E74C3C;">Sair</a>
-            <?php else: ?>
-                <a href="entrar">Entrar</a>
-                <a href="cadastro" class="btn-destaque">Criar Conta</a>
-            <?php endif; ?>
-            <button class="btn-dark" id="themeBtn">🌓</button>
-        </div>
-    </header>
 
     <div class="container">
         <article class="post">
@@ -417,6 +398,7 @@ $time = max(1, ceil(str_word_count(strip_tags($p['conteudo'])) / 200));
         </article>
     </div>
 
+    <?php require 'layout/script.php'; ?>
     <script>
         // MODO NOTURNO
         const themeBtn = document.getElementById('themeBtn');
@@ -471,6 +453,4 @@ $time = max(1, ceil(str_word_count(strip_tags($p['conteudo'])) / 200));
             }
         }
     </script>
-</body>
-
-</html>
+<?php require 'layout/footer.php'; ?>

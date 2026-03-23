@@ -1,5 +1,5 @@
 <?php
-require 'db.php';
+require_once __DIR__ . '/bootstrap.php';
 $q = $_GET['q'] ?? '';
 $posts = [];
 if (strlen($q) >= 2) {

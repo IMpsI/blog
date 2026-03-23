@@ -1,6 +1,5 @@
 <?php
-session_start();
-require 'db.php';
+require_once __DIR__ . '/bootstrap.php';
 
 if (!isset($_SESSION['logado'])) {
     header('Location: entrar');
@@ -33,6 +32,8 @@ $u = $db->query("SELECT * FROM usuarios WHERE usuario = '$user_login'")->fetchAr
 <head>
     <meta charset="UTF-8">
     <title>Meu Perfil - O Blog</title>
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/painel.css">
     <style>
         :root {
             --bg: #F0F8FF;
@@ -157,13 +158,7 @@ $u = $db->query("SELECT * FROM usuarios WHERE usuario = '$user_login'")->fetchAr
 </head>
 
 <body>
-    <header>
-        <a href="/" class="logo">O Blog</a>
-        <div style="display:flex; align-items:center; gap:20px;">
-            <a href="painel" style="color:var(--accent); text-decoration:none; font-weight:bold;">Painel</a>
-            <button class="btn-theme" id="themeBtn">Alternar Tema</button>
-        </div>
-    </header>
+    <?php $busca = ''; require 'layout/header_pesquisa.php'; ?>
 
     <div class="container">
         <div class="profile-box">

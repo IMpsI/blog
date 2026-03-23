@@ -1,10 +1,9 @@
 <?php
-session_start();
-require 'db.php';
+require_once __DIR__ . '/bootstrap.php';
 
 // TRAVA NÍVEL LEITOR: Expulsa os leitores que tentarem forçar a URL
 if ($_SESSION['nivel'] === 'leitor') {
-    header('Location: /');
+    header('Location: index.php');
     exit;
 }
 

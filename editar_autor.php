@@ -1,9 +1,8 @@
 <?php
-session_start();
-require 'db.php';
+require_once __DIR__ . '/bootstrap.php';
 
 if (!isset($_SESSION['logado']) || $_SESSION['nivel'] !== 'admin') {
-    header('Location: /');
+    header('Location: index.php');
     exit;
 }
 
@@ -31,6 +30,8 @@ $usuarios = $db->query("SELECT * FROM usuarios ORDER BY nivel DESC, nome ASC");
 <head>
     <meta charset="UTF-8">
     <title>Contas - O Blog</title>
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/painel.css">
     <style>
         :root {
             --bg: #F0F8FF;
@@ -165,13 +166,7 @@ $usuarios = $db->query("SELECT * FROM usuarios ORDER BY nivel DESC, nome ASC");
 </head>
 
 <body>
-    <header>
-        <a href="/" class="logo">O Blog <span style="font-size: 0.9rem; color: var(--ink-light); font-style: normal; font-weight: normal;">| Contas</span></a>
-        <div style="display:flex; align-items:center; gap:20px;">
-            <a href="painel" style="color:var(--accent); text-decoration:none; font-weight:bold;">Painel</a>
-            <button class="btn-theme" id="themeBtn">Alternar Tema</button>
-        </div>
-    </header>
+    <?php $busca = ''; require 'layout/header_pesquisa.php'; ?>
 
     <div class="container">
         <div class="content-box">

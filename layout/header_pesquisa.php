@@ -1,9 +1,16 @@
 <header>
-    <a href="/" class="logo">O Blog</a>
+    <?php
+    $basePath = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'] ?? '')), '/');
+    if ($basePath === '' || $basePath === '.') {
+        $basePath = '';
+    }
+    $homeUrl = ($basePath === '' ? '/' : $basePath . '/');
+    ?>
+    <a href="<?= $homeUrl ?>" class="logo">O Blog</a>
     
     <div class="search-container">
-        <form action="/" method="GET" class="search-form" id="mainSearchForm">
-            <input type="text" name="q" id="searchInput" autocomplete="off" placeholder="Pesquisar histórias..." value="<?= htmlspecialchars($busca) ?>">
+        <form action="<?= $homeUrl ?>" method="GET" class="search-form" id="mainSearchForm">
+            <input type="text" name="q" id="searchInput" autocomplete="off" placeholder="Pesquisar histórias..." value="<?= htmlspecialchars($busca ?? '') ?>">
             <button type="submit" title="Pesquisar">
                 <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             </button>
