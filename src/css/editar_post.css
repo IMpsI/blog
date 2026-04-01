@@ -1,0 +1,104 @@
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto;
+    background: #1e1e1e;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    color: #2196F3;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    background: #2d2d2d;
+    border: 1px solid #444;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button.btn-pub {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background: #2196F3;
+    color: white;
+    border: none;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button.btn-pub:hover {
+    background: #1976D2;
+}
+
+.btn-top {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-dash {
+    background-color: #555;
+    color: white;
+}
+
+.tox-notification {
+    display: none !important;
+}
+
+.msg-success {
+    color: #4CAF50;
+    text-align: center;
+    font-weight: bold;
+}
+
+.msg-error {
+    color: #F44336;
+    text-align: center;
+}
+
+.access-denied {
+    background: #121212;
+    color: white;
+    font-family: sans-serif;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.access-denied-title {
+    color: #F44336;
+}
+
+.access-denied-link {
+    color: #2196F3;
+}

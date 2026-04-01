@@ -1,0 +1,87 @@
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.content-box {
+    background: var(--paper);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.title-users {
+    margin-top: 0;
+    font-family: 'Georgia', serif;
+    font-weight: normal;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th {
+    text-align: left;
+    padding: 15px;
+    color: var(--ink-light);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--border);
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid var(--border);
+}
+
+.badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.badge-admin {
+    background: #FAD7A0;
+    color: #7E5109;
+}
+
+.badge-autor {
+    background: #AED6F1;
+    color: #21618C;
+}
+
+.badge-leitor {
+    background: #D5DBDB;
+    color: #515A5A;
+}
+
+.del-link {
+    color: #E74C3C;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.85rem;
+    border: 1px solid #E74C3C;
+    padding: 5px 10px;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.del-link:hover {
+    background: #E74C3C;
+    color: white;
+}
+
+.user-handle {
+    color: var(--ink-light);
+}
+
+.self-account {
+    color: var(--ink-light);
+    font-style: italic;
+}

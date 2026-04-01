@@ -1,0 +1,104 @@
+.post {
+    padding: 50px 40px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+    margin: 0 0 20px 0;
+    font-family: 'Georgia', serif;
+    font-size: 2.8rem;
+    color: var(--ink);
+    text-align: center;
+    line-height: 1.1;
+}
+
+.meta {
+    justify-content: center;
+    gap: 20px;
+    border-bottom: 1px dashed var(--baby-blue);
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+}
+
+.conteudo {
+    line-height: 1.9;
+    font-size: 1.25rem;
+}
+
+.conteudo p {
+    margin-bottom: 25px;
+}
+
+.interact-bar {
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.comments-section {
+    margin-top: 50px;
+    border-top: 2px solid var(--border);
+    padding-top: 40px;
+}
+
+.comments-section h3 {
+    font-family: 'Georgia', serif;
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.comment strong {
+    font-size: 1.1rem;
+}
+
+.comment-text {
+    margin-top: 10px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.read-time {
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.comment-form-spacing {
+    margin-bottom: 50px;
+}
+
+.comments-login-box {
+    text-align: center;
+    background: var(--bg);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+}
+
+.comment-date {
+    color: var(--ink-light);
+}
+
+.comment-date {
+    font-size: 0.8rem;
+    margin-left: 10px;
+}
+
+.edit-actions {
+    text-align: right;
+}
+
+.btn-cancel-inline {
+    background: #888;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.btn-save-inline {
+    display: inline-block;
+}
+
+.not-found {
+    text-align: center;
+    margin-top: 50px;
+    color: #2C3E50;
+}

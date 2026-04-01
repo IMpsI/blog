@@ -5,8 +5,40 @@
         $basePath = '';
     }
     $homeUrl = ($basePath === '' ? '/' : $basePath . '/');
+
+    $uriPath = strtolower(trim(parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH) ?? '', '/'));
+    $slug = pathinfo($uriPath === '' ? 'index' : $uriPath, PATHINFO_FILENAME);
+    $mapaPagina = [
+        'index' => 'inicio',
+        'dashboard' => 'painel',
+        'painel' => 'painel',
+        'admin' => 'estudio',
+        'estudio' => 'estudio',
+        'editar_autor' => 'contas',
+        'cadastrar_autor' => 'autores',
+        'editar_post' => 'editar post',
+        'cadastro' => 'criar conta',
+        'login' => 'acessar',
+        'confirmar_email' => 'confirmacao',
+        'minha_conta' => 'perfil',
+        'ler' => 'leitura'
+    ];
+
+    $paginaAtual = '';
+    if (!empty($pageTitle)) {
+        $paginaAtual = trim(preg_replace('/\s*-\s*O Blog.*$/i', '', (string)$pageTitle));
+    }
+    if ($paginaAtual === '' && isset($mapaPagina[$slug])) {
+        $paginaAtual = $mapaPagina[$slug];
+    }
+    if ($paginaAtual === '' || strcasecmp($paginaAtual, 'O Blog') === 0) {
+        $paginaAtual = 'biblioteca';
+    }
     ?>
-    <a href="<?= $homeUrl ?>" class="logo">O Blog</a>
+    <div class="logo-wrap">
+        <a href="<?= $homeUrl ?>" class="logo">O Blog</a>
+        <span class="page-soft-label">/ <?= htmlspecialchars(strtolower($paginaAtual)) ?></span>
+    </div>
     
     <div class="search-container">
         <form action="<?= $homeUrl ?>" method="GET" class="search-form" id="mainSearchForm">
@@ -27,7 +59,7 @@
                     echo  "<span>Olá, <strong> {$_SESSION['autor_nome']}</strong></span>";
                 }
                 ?>
-            <a href="sair" style="color: #E74C3C;">Sair</a>
+            <a href="sair" class="logout-link">Sair</a>
         <?php else: ?>
             <a href="entrar">Entrar</a>
             <a href="cadastro" class="btn-destaque">Criar Conta</a>

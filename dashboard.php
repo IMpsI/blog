@@ -32,7 +32,7 @@ require 'layout/header_pesquisa.php';
     </div>
 
     <div class="main-content">
-        <h2 style="margin-top:0; font-family:'Georgia', serif; font-weight: normal; color: var(--ink);">Publicações Recentes</h2>
+        <h2 class="dashboard-title">Publicações Recentes</h2>
         <table>
             <thead>
                 <tr>
@@ -45,7 +45,7 @@ require 'layout/header_pesquisa.php';
                 <?php while ($p = $posts->fetchArray(SQLITE3_ASSOC)): ?>
                     <tr>
                         <td><?= htmlspecialchars($p['titulo']) ?></td>
-                        <td style="color:var(--ink-light);"><?= date('d/m/y', strtotime($p['data_publicacao'])) ?></td>
+                        <td class="dashboard-date"><?= date('d/m/y', strtotime($p['data_publicacao'])) ?></td>
                         <td>
                             <a href="editar-post?id=<?= $p['id'] ?>" class="action-link edit">Editar</a>
                             <a href="excluir-post?id=<?= $p['id'] ?>" class="action-link del" onclick="return confirm('Excluir permanentemente?')">Excluir</a>

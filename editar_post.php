@@ -33,9 +33,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bindValue(':id', $id, SQLITE3_INTEGER);
 
     if ($stmt->execute()) {
-        $mensagem = "<p style='color: #4CAF50; text-align: center; font-weight: bold;'>Postagem atualizada com sucesso!</p>";
+        $mensagem = "<p class='msg-success'>Postagem atualizada com sucesso!</p>";
     } else {
-        $mensagem = "<p style='color: #F44336; text-align: center;'>Erro ao atualizar a postagem.</p>";
+        $mensagem = "<p class='msg-error'>Erro ao atualizar a postagem.</p>";
     }
 }
 
@@ -50,11 +50,14 @@ if (!$post) {
 
 // TRAVA DE SEGURANÇA (ABAC): Se quem está tentando editar NÃO é o autor da postagem, bloqueia!
 if ($post['autor_login'] !== $_SESSION['usuario_login']) {
-    echo "<body style='background:#121212; color:white; font-family:sans-serif; text-align:center; padding-top:100px;'>";
-    echo "<h1 style='color:#F44336;'>ACESSO NEGADO</h1>";
+    echo "<!DOCTYPE html>";
+    echo "<html lang='pt-BR'><head><meta charset='UTF-8'><title>Acesso Negado</title>";
+    echo "<link rel='stylesheet' href='src/css/editar_post.css'></head>";
+    echo "<body class='access-denied'>";
+    echo "<h1 class='access-denied-title'>ACESSO NEGADO</h1>";
     echo "<p>Você não tem permissão para editar uma postagem que pertence a outro autor.</p>";
-    echo "<a href='painel' style='color:#2196F3;'>Voltar ao Painel</a>";
-    echo "</body>";
+    echo "<a href='painel' class='access-denied-link'>Voltar ao Painel</a>";
+    echo "</body></html>";
     exit;
 };
 
@@ -69,89 +72,11 @@ if (!$post) {
 <head>
     <meta charset="UTF-8">
     <title>Editar Postagem</title>
+    <link rel="stylesheet" href="src/css/header.css">
     <link rel="stylesheet" href="src/css/style.css">
     <link rel="stylesheet" href="src/css/painel.css">
+    <link rel="stylesheet" href="src/css/editar_post.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.2/tinymce.min.js"></script>
-    <style>
-        body {
-            background-color: #121212;
-            color: #e0e0e0;
-            font-family: sans-serif;
-            margin: 0;
-            padding: 40px;
-            display: flex;
-            justify-content: center;
-            position: relative;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 900px;
-            background: #1e1e1e;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        h1 {
-            text-align: center;
-            font-weight: 300;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
-            color: #2196F3;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 20px;
-            background: #2d2d2d;
-            border: 1px solid #444;
-            color: white;
-            font-size: 1.2rem;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        button.btn-pub {
-            width: 100%;
-            padding: 15px;
-            margin-top: 20px;
-            background: #2196F3;
-            color: white;
-            border: none;
-            font-size: 1.1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        button.btn-pub:hover {
-            background: #1976D2;
-        }
-
-        .btn-top {
-            position: absolute;
-            top: 20px;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            transition: 0.3s;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .btn-dash {
-            right: 30px;
-            background-color: #555;
-            color: white;
-        }
-
-        .tox-notification {
-            display: none !important;
-        }
-    </style>
     <script>
         tinymce.init({
             selector: '#editor',

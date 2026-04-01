@@ -28,149 +28,6 @@
        transition: 0.3s;
    }
 
-   /* HEADER */
-   header {
-       background: var(--paper);
-       padding: 15px 40px;
-       display: flex;
-       justify-content: space-between;
-       align-items: center;
-       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-       position: sticky;
-       top: 0;
-       z-index: 1000;
-       border-bottom: 2px solid var(--border);
-   }
-
-   .logo {
-       font-size: 1.6rem;
-       font-weight: bold;
-       color: var(--accent);
-       text-decoration: none;
-       font-family: 'Georgia', serif;
-       font-style: italic;
-       flex-shrink: 0;
-   }
-
-   /* SEARCH BAR PROFISSIONAL */
-   .search-container {
-       position: relative;
-       flex-grow: 1;
-       max-width: 450px;
-       margin: 0 30px;
-   }
-
-   .search-form {
-       display: flex;
-       align-items: center;
-       background: var(--bg);
-       border: 1px solid var(--baby-blue);
-       border-radius: 25px;
-       padding: 2px 5px 2px 15px;
-       transition: 0.3s;
-   }
-
-   .search-form:focus-within {
-       border-color: var(--accent);
-       box-shadow: 0 0 8px rgba(52, 152, 219, 0.2);
-   }
-
-   .search-form input {
-       flex-grow: 1;
-       border: none;
-       background: transparent;
-       color: var(--ink);
-       padding: 10px 0;
-       outline: none;
-       font-size: 0.95rem;
-   }
-
-   .search-form button {
-       background: var(--baby-blue);
-       border: none;
-       color: white;
-       width: 38px;
-       height: 38px;
-       border-radius: 50%;
-       cursor: pointer;
-       display: flex;
-       align-items: center;
-       justify-content: center;
-       transition: 0.3s;
-       margin-left: 10px;
-   }
-
-   .search-form button:hover {
-       background: var(--accent);
-       transform: scale(1.05);
-   }
-
-   /* SUGESTÕES AUTOCOMPLETE */
-   #search-results {
-       position: absolute;
-       top: 55px;
-       left: 10px;
-       right: 10px;
-       background: var(--paper);
-       border-radius: 12px;
-       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-       display: none;
-       z-index: 1100;
-       border: 1px solid var(--border);
-       overflow: hidden;
-   }
-
-   .search-item {
-       padding: 12px 15px;
-       border-bottom: 1px solid var(--border);
-       cursor: pointer;
-       color: var(--ink);
-       text-decoration: none;
-       display: block;
-       font-size: 0.9rem;
-   }
-
-   .search-item:hover {
-       background: var(--bg);
-       color: var(--accent);
-   }
-
-   .nav-links {
-       display: flex;
-       align-items: center;
-   }
-
-   .nav-links a {
-       color: var(--ink-light);
-       text-decoration: none;
-       margin-left: 15px;
-       font-weight: 600;
-       padding: 8px 15px;
-       border-radius: 20px;
-       transition: 0.2s;
-   }
-
-   .nav-links a:hover {
-       color: var(--accent);
-       background: var(--bg);
-   }
-
-   .btn-destaque {
-       background: var(--baby-blue);
-       color: white !important;
-   }
-
-   .btn-dark {
-       background: none;
-       border: 1px solid var(--baby-blue);
-       cursor: pointer;
-       padding: 8px;
-       border-radius: 50%;
-       margin-left: 10px;
-       color: var(--ink);
-       line-height: 0;
-   }
-
    /* POSTS ESTILO LIVRO */
    .container {
        max-width: 800px;
@@ -357,4 +214,79 @@
    .btn-send:hover {
        background: var(--accent);
        transform: translateY(-2px);
+   }
+
+   .search-result-title {
+       color: var(--ink-light);
+       margin-bottom: 30px;
+       font-weight: normal;
+   }
+
+   .read-time-pill {
+       color: var(--accent);
+       font-weight: bold;
+       background: var(--bg);
+       padding: 4px 12px;
+       border-radius: 15px;
+   }
+
+   .comment-edited {
+       color: var(--ink-light);
+   }
+
+   .inline-form {
+       display: inline;
+   }
+
+   .edit-form {
+       display: none;
+   }
+
+   .btn-mini-danger {
+       color: #E74C3C;
+   }
+
+   .btn-send-cancel {
+       background: #888;
+   }
+
+   .comments-link-all {
+       display: block;
+       text-align: center;
+       color: var(--accent);
+       font-weight: bold;
+       margin: 15px 0;
+       text-decoration: none;
+   }
+
+   .comments-empty {
+       text-align: center;
+       color: var(--ink-light);
+       font-style: italic;
+       font-size: 0.9rem;
+   }
+
+   .comment-form-spacing-sm {
+       margin-top: 20px;
+   }
+
+   .comments-login {
+       text-align: center;
+       font-size: 0.9rem;
+       color: var(--ink-light);
+   }
+
+   .comments-login-link {
+       color: var(--accent);
+       font-weight: bold;
+   }
+
+   .empty-posts {
+       text-align: center;
+       padding: 50px;
+       color: var(--ink-light);
+   }
+
+   .empty-posts-link {
+       color: var(--accent);
    }

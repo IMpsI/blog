@@ -63,7 +63,7 @@ require 'layout/header_pesquisa.php';
 
 <div class="container">
     <?php if ($busca): ?>
-        <h3 style="color:var(--ink-light); margin-bottom:30px; font-weight:normal;">Mostrando resultados para: "<strong><?= htmlspecialchars($busca) ?></strong>"</h3>
+        <h3 class="search-result-title">Mostrando resultados para: "<strong><?= htmlspecialchars($busca) ?></strong>"</h3>
     <?php endif; ?>
 
     <?php
@@ -78,7 +78,7 @@ require 'layout/header_pesquisa.php';
             <h2><?= htmlspecialchars($p['titulo']) ?></h2>
             <div class="meta">
                 <span>Por <strong><?= htmlspecialchars($autor) ?></strong> • <?= date('d/m/Y', strtotime($p['data_publicacao'])) ?></span>
-                <span style="color: var(--accent); font-weight: bold; background: var(--bg); padding: 4px 12px; border-radius: 15px;">⏱️ <?= $time ?> min</span>
+                <span class="read-time-pill">⏱️ <?= $time ?> min</span>
             </div>
             <div class="conteudo"><?= $p['conteudo'] ?></div>
 
@@ -104,15 +104,15 @@ require 'layout/header_pesquisa.php';
                     ?>
                         <div class="comment">
                             <strong><?= htmlspecialchars($autor_c) ?></strong>
-                            <?php if ($c['editado']) echo "<small style='color:var(--ink-light)'> (editado)</small>"; ?>
+                            <?php if ($c['editado']) echo "<small class='comment-edited'> (editado)</small>"; ?>
 
                             <div class="comment-actions">
                                 <?php if ($meu): ?><button class="btn-mini" onclick="editCom(<?= $c['id'] ?>)">Editar</button><?php endif; ?>
                                 <?php if ($meu || $adm): ?>
-                                    <form method="POST" style="display:inline" onsubmit="return confirm('Excluir este comentário?')">
+                                    <form method="POST" class="inline-form" onsubmit="return confirm('Excluir este comentário?')">
                                         <input type="hidden" name="excluir_comentario_id" value="<?= $c['id'] ?>">
                                         <input type="hidden" name="post_id_origem" value="<?= $pid ?>">
-                                        <button type="submit" class="btn-mini" style="color:#E74C3C">Excluir</button>
+                                        <button type="submit" class="btn-mini btn-mini-danger">Excluir</button>
                                     </form>
                                 <?php endif; ?>
                             </div>
@@ -120,12 +120,12 @@ require 'layout/header_pesquisa.php';
                             <div class="comment-text" id="ct-<?= $c['id'] ?>"><?= nl2br(htmlspecialchars($c['comentario'])) ?></div>
 
                             <?php if ($meu): ?>
-                                <form method="POST" id="fe-<?= $c['id'] ?>" style="display:none">
+                                <form method="POST" id="fe-<?= $c['id'] ?>" class="edit-form">
                                     <input type="hidden" name="editar_comentario_id" value="<?= $c['id'] ?>">
                                     <input type="hidden" name="post_id_origem" value="<?= $pid ?>">
                                     <textarea name="novo_comentario" required><?= $c['comentario'] ?></textarea>
                                     <button type="submit" class="btn-send">Salvar Alteração</button>
-                                    <button type="button" class="btn-send" style="background:#888" onclick="location.reload()">Cancelar</button>
+                                    <button type="button" class="btn-send btn-send-cancel" onclick="location.reload()">Cancelar</button>
                                 </form>
                             <?php endif; ?>
                         </div>
@@ -133,24 +133,24 @@ require 'layout/header_pesquisa.php';
                 </div>
 
                 <?php if ($p['qtd_coment'] > 3): ?>
-                    <a href="ler?id=<?= $pid ?>" style="display:block; text-align:center; color:var(--accent); font-weight:bold; margin:15px 0; text-decoration:none;">Ver todos os <?= $p['qtd_coment'] ?> comentários...</a>
+                    <a href="ler?id=<?= $pid ?>" class="comments-link-all">Ver todos os <?= $p['qtd_coment'] ?> comentários...</a>
                 <?php elseif ($total_exibidos == 0): ?>
-                    <p style="text-align:center; color:var(--ink-light); font-style:italic; font-size:0.9rem;">Nenhuma resposta ainda. Comece a conversa!</p>
+                    <p class="comments-empty">Nenhuma resposta ainda. Comece a conversa!</p>
                 <?php endif; ?>
 
                 <?php if (isset($_SESSION['logado'])): ?>
-                    <form method="POST" style="margin-top:20px;">
+                    <form method="POST" class="comment-form-spacing-sm">
                         <input type="hidden" name="post_id" value="<?= $pid ?>">
                         <textarea name="comentario" placeholder="O que você achou dessa história?" required></textarea>
                         <button type="submit" class="btn-send">Publicar Comentário</button>
                     </form>
                 <?php else: ?>
-                    <p style="text-align:center; font-size:0.9rem; color:var(--ink-light);">Faça <a href="entrar" style="color:var(--accent); font-weight:bold;">login</a> para comentar.</p>
+                    <p class="comments-login">Faça <a href="entrar" class="comments-login-link">login</a> para comentar.</p>
                 <?php endif; ?>
             </div>
         </article>
     <?php endwhile;
-    if (!$tem_posts) echo "<div style='text-align:center; padding:50px; color:var(--ink-light);'><h3>Nenhuma história encontrada aqui.</h3><a href='/' style='color:var(--accent)'>Voltar ao início</a></div>";
+    if (!$tem_posts) echo "<div class='empty-posts'><h3>Nenhuma história encontrada aqui.</h3><a href='/' class='empty-posts-link'>Voltar ao início</a></div>";
     ?>
 </div>
 <?php

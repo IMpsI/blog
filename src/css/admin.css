@@ -1,0 +1,96 @@
+/* Força header a ficar em uma linha mesmo com flex children */
+header {
+    flex-wrap: nowrap !important;
+    min-width: 100%;
+}
+
+.logo-wrap {
+    flex-shrink: 0 !important;
+}
+
+.search-container {
+    flex-wrap: nowrap !important;
+}
+
+.nav-links {
+    flex-wrap: nowrap !important;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.editor-box {
+    background: var(--paper);
+    padding: 40px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.8rem;
+    font-family: 'Georgia', serif;
+    border: none;
+    border-bottom: 2px solid var(--border);
+    background: transparent;
+    color: var(--ink);
+    outline: none;
+    margin-bottom: 30px;
+}
+
+input[type="text"]:focus {
+    border-color: var(--accent);
+}
+
+textarea {
+    width: 100%;
+    min-height: 400px;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-family: 'Georgia', serif;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--ink);
+    border-radius: 10px;
+    resize: vertical;
+    outline: none;
+    line-height: 1.6;
+}
+
+.actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+}
+
+.btn {
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.btn-save {
+    background: var(--accent);
+    color: white;
+}
+
+.btn-cancel {
+    background: #BDC3C7;
+    color: #2C3E50;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}

@@ -104,3 +104,14 @@ td {
     font-size: 0.8rem;
     font-weight: bold;
 }
+
+.dashboard-title {
+    margin-top: 0;
+    font-family: 'Georgia', serif;
+    font-weight: normal;
+    color: var(--ink);
+}
+
+.dashboard-date {
+    color: var(--ink-light);
+}
