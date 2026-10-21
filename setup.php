@@ -1,20 +1,19 @@
 <?php
-require_once __DIR__ . '/bootstrap.php';
+require_once __DIR__ . '/config.php';
 
-// Limpa a tabela para garantir
-$db->exec("DELETE FROM usuarios WHERE usuario = 'Mps'");
-
-$nome = "Matheus";
-$user = "Mps";
-$pass = password_hash("36574789", PASSWORD_DEFAULT);
-$nivel = "admin";
-
-$stmt = $db->prepare('INSERT INTO usuarios (nome, usuario, senha, nivel) VALUES (:n, :u, :p, :l)');
-$stmt->bindValue(':n', $nome, SQLITE3_TEXT);
-$stmt->bindValue(':u', $user, SQLITE3_TEXT);
-$stmt->bindValue(':p', $pass, SQLITE3_TEXT);
-$stmt->bindValue(':l', $nivel, SQLITE3_TEXT);
-
-if ($stmt->execute()) {
-    echo "Usuário Mps criado com sucesso! Tente logar agora.";
+try {
+    $server = new PDO(
+        sprintf('mysql:host=%s;port=%s;charset=utf8mb4', envValue('BLOG_DB_HOST', DB_HOST), envValue('BLOG_DB_PORT', DB_PORT)),
+        envValue('BLOG_DB_USER', DB_USER),
+        envValue('BLOG_DB_PASS', DB_PASS),
+        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+    );
+    $schema = file_get_contents(__DIR__ . '/database/schema.sql');
+    foreach (array_filter(array_map('trim', preg_split('/;\s*(?:\r?\n|$)/', $schema))) as $statement) {
+        $server->exec($statement);
+    }
+    echo 'Banco MySQL criado/atualizado com sucesso.';
+} catch (PDOException $exception) {
+    http_response_code(500);
+    echo 'Falha ao configurar o banco: ' . htmlspecialchars($exception->getMessage(), ENT_QUOTES, 'UTF-8');
 }
