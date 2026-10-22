@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+RewriteRule ^$ index.php [L,QSA]
+RewriteRule ^entrar/?$ login.php [L,QSA]
+RewriteRule ^cadastro/?$ register.php [L,QSA]
+RewriteRule ^painel/?$ dashboard.php [L,QSA]
+RewriteRule ^ler/?$ read.php [L,QSA]
+RewriteRule ^sair/?$ logout.php [L,QSA]

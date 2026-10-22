@@ -1,0 +1,20 @@
+{
+  "name": "blog-2.0",
+  "version": "2.1.0",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "npm run test:php && npm run test:e2e",
+    "test:php": "C:\\xampp\\php\\php.exe tests\\run.php",
+    "test:e2e": "playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.64.1"
+  }
+}
