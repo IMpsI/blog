@@ -7,6 +7,8 @@ $tests = [
     'database_test.php',
     'frontend_test.php',
     'routes_test.php',
+    'readability_test.php',
+    'php_syntax_test.php',
 ];
 
 foreach ($tests as $test) {

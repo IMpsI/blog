@@ -12,6 +12,8 @@ CREATE TABLE IF NOT EXISTS usuarios (
     email_confirmado TINYINT(1) NOT NULL DEFAULT 0,
     token_autenticacao CHAR(32) NULL,
     status_solicitacao VARCHAR(30) NOT NULL DEFAULT 'nenhuma',
+    tema_cor_principal CHAR(7) NULL,
+    tema_cor_secundaria CHAR(7) NULL,
     criado_em DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 

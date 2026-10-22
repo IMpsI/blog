@@ -4,6 +4,7 @@
     --muted: #52606d;
     --accent: #1769aa;
     --accent-ink: #ffffff;
+    --link-color: #1769aa;
     --danger-bg: #b91c1c;
     --danger-ink: #ffffff;
     --line: #e5e7eb;
@@ -30,13 +31,13 @@ body {
 }
 
 a {
-    color: var(--accent);
+    color: var(--link-color);
     text-decoration: none;
     transition: color 160ms ease, opacity 160ms ease;
 }
 
 a:hover {
-    color: var(--accent);
+    color: var(--link-color);
 }
 
 :where(a, button, input, textarea, select):focus-visible {
@@ -73,7 +74,7 @@ a:hover {
 }
 
 .brand:hover {
-    color: var(--accent);
+    color: var(--link-color);
     transform: translateY(-1px);
 }
 
@@ -229,7 +230,7 @@ table a,
 .dashboard-grid a:hover,
 table a:hover,
 .container>p a:hover {
-    color: var(--accent);
+    color: var(--link-color);
     animation: text-haze 2.8s ease-in-out infinite alternate;
     transform: translateY(-1px);
 }
@@ -253,6 +254,34 @@ table a:hover,
     max-width: 900px;
     margin: 40px auto;
     padding: 0 24px;
+}
+
+.auth-page {
+    max-width: 680px;
+}
+
+.auth-box {
+    width: 100%;
+    margin: 0 auto 24px;
+}
+
+.auth-box h1 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.auth-box .form-grid {
+    width: 100%;
+    max-width: none;
+}
+
+.auth-box .btn-submit {
+    width: 100%;
+}
+
+.auth-box .form-grid > p:last-child {
+    margin: 0;
+    text-align: center;
 }
 
 .post,
@@ -337,8 +366,13 @@ table a:hover,
 .button-primary:hover,
 .btn-submit:hover,
 .btn-send:hover {
-    background: color-mix(in srgb, var(--accent) 82%, var(--ink));
+    background: var(--accent);
     color: var(--accent-ink);
+}
+
+.theme-reset {
+    width: 100%;
+    text-align: center;
 }
 
 .dark-mode .button:not(.button-primary),
@@ -397,6 +431,33 @@ table a:hover,
     outline: 0;
 }
 
+.theme-fields {
+    display: grid;
+    gap: 10px;
+    margin: 8px 0;
+    padding: 14px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+}
+
+.theme-fields legend {
+    padding: 0 6px;
+    font-weight: bold;
+}
+
+.theme-fields p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+.theme-fields input[type="color"] {
+    width: 58px;
+    height: 38px;
+    padding: 3px;
+    cursor: pointer;
+}
+
 .form-grid input::placeholder,
 .form-grid textarea::placeholder,
 .comment-form textarea::placeholder,
@@ -440,13 +501,13 @@ table a:hover,
     padding: 8px;
     border: 0;
     background: none;
-    color: var(--accent);
+    color: var(--link-color);
     cursor: pointer;
     transition: color 160ms ease, transform 160ms ease;
 }
 
 .btn-mini:hover {
-    color: var(--accent);
+    color: var(--link-color);
     transform: translateY(-1px);
 }
 
@@ -549,6 +610,33 @@ td {
     color: var(--message-ink);
 }
 
+.toast {
+    margin: 0;
+    opacity: 1;
+    animation: toast-fade 5.2s ease forwards;
+    transition: opacity 700ms ease, transform 700ms ease;
+}
+
+.toast:hover {
+    animation-play-state: paused;
+}
+
+.toast.is-hidden {
+    opacity: 0;
+    transform: translateY(-4px);
+    pointer-events: none;
+}
+
+@keyframes toast-fade {
+    0%, 68% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
 .error {
     background: #fdecea;
     color: #a93226;
@@ -560,6 +648,7 @@ td {
     --muted: #a0aec0;
     --accent: #63b3ed;
     --accent-ink: #102a43;
+    --link-color: #63b3ed;
     --danger-bg: #ef4444;
     --danger-ink: #260707;
     --line: #354454;
@@ -571,6 +660,123 @@ td {
     --input-bg: #24313d;
     --placeholder: #cbd5e1;
     --text-haze: rgba(99, 179, 237, 0.22);
+}
+
+body.dark-mode a,
+body.dark-mode a:hover,
+body.dark-mode a:visited {
+    color: #9bd3f7 !important;
+}
+
+body.dark-mode .search-form button,
+body.dark-mode .theme-button {
+    color: #ffffff !important;
+}
+
+body.dark-mode .btn-submit,
+body.dark-mode .btn-submit:hover,
+body.dark-mode .btn-send,
+body.dark-mode .btn-send:hover {
+    background: #0b5e8e !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .error {
+    background: #7f1d1d;
+    color: #ffffff;
+}
+
+.custom-theme {
+    --paper: var(--custom-surface-light);
+    --ink: var(--custom-secondary-readable-light);
+    --muted: var(--custom-secondary-readable-light);
+    --accent: var(--custom-secondary-readable-light);
+    --accent-ink: var(--custom-secondary-ink-light);
+    --link-color: var(--custom-secondary-readable-light);
+    --line: var(--custom-secondary-readable-light);
+    --control-bg: var(--custom-secondary-readable-light);
+    --control-ink: var(--custom-secondary-ink-light);
+    --input-bg: color-mix(in srgb, var(--custom-primary) 88%, var(--custom-secondary-readable-light));
+    --placeholder: var(--custom-secondary-readable-light);
+    --text-haze: color-mix(in srgb, var(--custom-primary) 28%, transparent);
+    --message-bg: var(--custom-secondary-readable-light);
+    --message-ink: var(--custom-secondary-ink-light);
+    --header-bg: var(--custom-header-light);
+    --header-ink: var(--custom-header-text-light);
+}
+
+.dark-mode.custom-theme {
+    --paper: var(--custom-surface-dark);
+    --ink: var(--custom-secondary-readable-dark);
+    --muted: var(--custom-secondary-readable-dark);
+    --link-color: var(--custom-secondary-readable-dark);
+    --line: var(--custom-secondary-readable-dark);
+    --control-bg: var(--custom-secondary-readable-dark);
+    --placeholder: var(--custom-secondary-readable-dark);
+    --message-bg: var(--custom-secondary-readable-dark);
+    --message-ink: var(--custom-secondary-ink-dark);
+    --control-ink: var(--custom-secondary-ink-dark);
+    --accent: var(--custom-secondary-readable-dark);
+    --accent-ink: var(--custom-secondary-ink-dark);
+    --header-bg: var(--custom-header-dark);
+    --header-ink: var(--custom-header-text-dark);
+}
+
+.custom-theme .site-header {
+    background: var(--header-bg);
+    color: var(--header-ink);
+    border-color: var(--line);
+}
+
+.custom-theme .site-header a,
+.custom-theme .site-header a:hover,
+.custom-theme .site-header a:visited,
+.custom-theme .site-header .search-form button,
+.custom-theme .site-header .theme-button {
+    color: var(--header-ink) !important;
+}
+
+.custom-theme a,
+.custom-theme a:hover,
+.custom-theme a:visited {
+    color: var(--link-color);
+}
+
+.custom-theme .button-primary,
+.custom-theme .btn-submit,
+.custom-theme .btn-send {
+    background: var(--custom-secondary-readable-light);
+    color: var(--custom-secondary-ink-light);
+}
+
+.custom-theme .theme-button {
+    color: var(--custom-secondary-readable-light);
+}
+
+.custom-theme .theme-button:hover {
+    color: var(--custom-secondary-readable-light);
+}
+
+.custom-theme .button-primary:hover,
+.custom-theme .btn-submit:hover,
+.custom-theme .btn-send:hover {
+    background: var(--custom-secondary-readable-light);
+    color: var(--custom-secondary-ink-light);
+}
+
+.dark-mode.custom-theme .button-primary,
+.dark-mode.custom-theme .btn-submit,
+.dark-mode.custom-theme .btn-send,
+.dark-mode.custom-theme .button-primary:hover,
+.dark-mode.custom-theme .btn-submit:hover,
+.dark-mode.custom-theme .btn-send:hover {
+    background: var(--custom-secondary-readable-dark);
+    color: var(--custom-secondary-ink-dark);
+}
+
+.dark-mode.custom-theme .theme-button,
+.dark-mode.custom-theme .theme-button:hover {
+    color: var(--header-ink) !important;
 }
 
 @media (max-width: 800px) {

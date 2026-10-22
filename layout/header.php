@@ -14,10 +14,11 @@
                 <?php else: ?>
                     <span>Olá, <?= e($_SESSION['user_name'] ?? '') ?></span>
                 <?php endif; ?>
+                <a href="profile.php">Meu perfil</a>
                 <a href="logout.php">Sair</a>
             <?php else: ?>
                 <a href="login.php">Entrar</a>
-                <a class="button button-primary" href="register.php">Criar conta</a>
+                <a href="register.php">Criar conta</a>
             <?php endif; ?>
             <button class="theme-button" id="themeBtn" type="button" title="Alternar tema">◐</button>
         </nav>

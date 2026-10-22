@@ -3,6 +3,23 @@
     const searchInput = document.querySelector('#searchInput');
     const searchResults = document.querySelector('#search-results');
 
+    document.querySelectorAll('.toast').forEach(toast => {
+        let timeout;
+        const hide = () => {
+            toast.classList.add('is-hidden');
+        };
+        const scheduleHide = () => {
+            clearTimeout(timeout);
+            timeout = setTimeout(hide, 4500);
+        };
+        toast.addEventListener('mouseenter', () => {
+            clearTimeout(timeout);
+            toast.classList.remove('is-hidden');
+        });
+        toast.addEventListener('mouseleave', scheduleHide);
+        scheduleHide();
+    });
+
     if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark-mode');
     themeButton?.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');

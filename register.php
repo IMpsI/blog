@@ -25,14 +25,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 renderStart('Criar conta');
 ?>
-<main class="container">
-    <div class="box">
-        <h1>Criar conta</h1><?php if ($message): ?><p class="message"><?= e($message) ?></p><?php endif; ?><form
-            method="post" class="form-grid"><input name="nome" placeholder="Nome completo" required><input
+<main class="container auth-page">
+    <div class="box auth-box">
+        <h1>Criar conta</h1>
+        <form method="post" class="form-grid"><input name="nome" placeholder="Nome completo" required><input
                 name="usuario" placeholder="Usuário" required><input type="email" name="email" placeholder="E-mail"
                 required><input type="password" name="senha" minlength="4" placeholder="Senha" required><input
                 type="password" name="senha_confirma" placeholder="Confirme a senha" required><button
-                class="btn-submit">Finalizar cadastro</button></form>
+                class="btn-submit">Finalizar cadastro</button><?php if ($message): ?><p class="message toast"
+                    role="alert"><?= e($message) ?></p><?php endif; ?></form>
         <p>Já tem conta? <a href="login.php">Entrar</a></p>
     </div>
 </main>

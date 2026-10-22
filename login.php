@@ -18,11 +18,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 renderStart('Entrar');
 ?>
-<main class="container">
-    <div class="box">
-        <h1>Acessar conta</h1><?php if ($message): ?><p class="message error"><?= e($message) ?></p><?php endif; ?><form
+<main class="container auth-page">
+    <div class="box auth-box">
+        <h1>Acessar conta</h1><form
             method="post" class="form-grid"><input name="usuario" placeholder="Usuário" required><input type="password"
-                name="senha" placeholder="Senha" required><button class="btn-submit">Entrar</button></form>
+                name="senha" placeholder="Senha" required><button class="btn-submit">Entrar</button><?php if ($message): ?><p class="message error toast" role="alert"><?= e($message) ?></p><?php endif; ?></form>
         <p>Novo por aqui? <a href="register.php">Criar conta</a></p>
     </div>
 </main>
